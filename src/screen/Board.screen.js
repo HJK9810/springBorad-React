@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import Pagination from "./Pagination.screen";
 import Moment from "react-moment";
+import { Link } from "react-router-dom";
 
 function Board() {
   const [post, setPost] = useState([]);
@@ -31,7 +32,9 @@ function Board() {
           {post.map((p) => (
             <tr key={p.id}>
               <td className="text-center">{p.id}</td>
-              <td>{p.title}</td>
+              <td>
+                <Link to={"/view/" + p.id}>{p.title}</Link>
+              </td>
               <td className="text-center">{p.editer}</td>
               <td className="text-center">
                 <Moment date={p.date} format="YYYY-MM-DD" />

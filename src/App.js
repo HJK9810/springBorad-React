@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Board from "./screen/Board.screen";
 import Main from "./screen/Main.screen";
+import View from "./screen/View.screen";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/board" element={<Board />}></Route>
+          <Route path="/view/:id" element={<View />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>
