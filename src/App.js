@@ -1,17 +1,21 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.scss";
+import axios from "axios";
+import Layout from "./Layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Board from "./screen/Board.screen";
+import Main from "./screen/Main.screen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button>click Me!</button>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/board" element={<Board />}></Route>
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
