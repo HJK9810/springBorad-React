@@ -8,6 +8,10 @@ class BoardService {
   findOne(id = 1) {
     return Axios.get(`/postApi/One/${id}`).then((res) => res.data);
   }
+
+  inputData(form) {
+    return Axios.post("/postApi/add", form);
+  }
 }
 
 export default new BoardService();

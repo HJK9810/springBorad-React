@@ -19,12 +19,16 @@ function Board() {
 
   return (
     <Container>
+      <button type="button" className="btn btn-outline-info m-2" onClick={(e) => (window.location.href = "/add")}>
+        등록
+      </button>
       <Table striped bordered hover className="m-3 table">
         <thead>
           <tr className="text-center">
             <th style={{ width: 10 + "%" }}>#</th>
             <th>title</th>
-            <th style={{ width: 20 + "%" }}>작성자</th>
+            <th style={{ width: 15 + "%" }}>작성자</th>
+            <th style={{ width: 15 + "%" }}>조회수</th>
             <th style={{ width: 20 + "%" }}>Date</th>
           </tr>
         </thead>
@@ -36,6 +40,7 @@ function Board() {
                 <Link to={"/view/" + p.id}>{p.title}</Link>
               </td>
               <td className="text-center">{p.editer}</td>
+              <td className="text-center">{p.viewCnt}</td>
               <td className="text-center">
                 <Moment date={p.date} format="YYYY-MM-DD" />
               </td>

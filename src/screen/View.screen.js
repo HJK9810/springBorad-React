@@ -10,7 +10,7 @@ function View() {
 
   useEffect(() => {
     BoardService.findOne(Number(id)).then((res) => setPost(res));
-  }, [post]);
+  }, []);
 
   return (
     <Container>
@@ -39,6 +39,10 @@ function View() {
           <tr>
             <td>작성자</td>
             <td>{post.editer}</td>
+          </tr>
+          <tr>
+            <td>조회수</td>
+            <td>{post.viewCnt}</td>
           </tr>
           <tr>
             <td>내용</td>

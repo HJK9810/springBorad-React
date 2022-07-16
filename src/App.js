@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Board from "./screen/Board.screen";
 import Main from "./screen/Main.screen";
 import View from "./screen/View.screen";
+import Add from "./screen/Add.screen";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Main />}></Route>
           <Route path="/board" element={<Board />}></Route>
           <Route path="/view/:id" element={<View />}></Route>
+          <Route path="/add" element={<Add />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>
