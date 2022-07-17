@@ -69,7 +69,7 @@ function Add() {
               <td>내용</td>
               <td>
                 <Form.Group controlId="content">
-                  <Form.Control as="textarea" rows={10} onChange={handleTextChange} required />
+                  <Form.Control as="textarea" rows={10} onChange={handleTextChange} style={{ resize: "none" }} required />
                 </Form.Group>
               </td>
             </tr>
