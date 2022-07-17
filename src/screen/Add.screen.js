@@ -27,11 +27,10 @@ function Add() {
         editer: editer,
         text: content,
       };
-
-      BoardService.inputData(formBody).then(() => navigate("/board"));
+      setValidated(true);
+      BoardService.inputData(formBody);
+      navigate("/board", { replace: true });
     }
-
-    setValidated(true);
   };
 
   return (
