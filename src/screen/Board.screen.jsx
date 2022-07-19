@@ -1,6 +1,7 @@
 import BoardService from "../service/BoardService";
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Pagination from "./Pagination.screen";
 import Moment from "react-moment";
 

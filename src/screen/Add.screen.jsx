@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 function Add() {
   const [title, setTitle] = useState("");
   const [editer, setEditer] = useState("");
-  const [content, setContent] = useState("");
+  const [text, setText] = useState("");
   const navigate = useNavigate();
   const date = moment().format("YYYY-MM-DD");
   const [validated, setValidated] = useState(false);
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleEditerChange = (event) => setEditer(event.target.value);
-  const handleTextChange = (event) => setContent(event.target.value);
+  const handleTextChange = (event) => setText(event.target.value);
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -25,7 +25,7 @@ function Add() {
       const formBody = {
         editer: editer,
         title: title,
-        content: content,
+        text: text,
       };
       setValidated(true);
       await BoardService.inputData(formBody);

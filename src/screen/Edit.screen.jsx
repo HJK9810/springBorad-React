@@ -9,14 +9,15 @@ function Edit() {
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
-  const [editer, setEditer] = useState(post.editer);
-  const [content, setContent] = useState("");
+  const [editer, setEditer] = useState("");
+  const [text, setText] = useState("");
 
   useEffect(() => {
     BoardService.getEditData(Number(id)).then((res) => {
       setPost(res);
       setTitle(res.title);
-      setContent(res.content);
+      setEditer(res.editer);
+      setText(res.text);
     });
   }, []);
 
@@ -26,7 +27,7 @@ function Edit() {
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleEditerChange = (event) => setEditer(event.target.value);
-  const handleTextChange = (event) => setContent(event.target.value);
+  const handleTextChange = (event) => setText(event.target.value);
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -38,7 +39,7 @@ function Edit() {
         id: id,
         editer: editer,
         title: title,
-        content: content,
+        text: text,
       };
       setValidated(true);
       await BoardService.editData(formBody);
