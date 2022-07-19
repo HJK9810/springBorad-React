@@ -52,8 +52,8 @@ function View() {
           </tr>
         </tbody>
       </Table>
-      <Comment />
-      <AddComment />
+      {/* <Comment />
+      <AddComment /> */}
     </Container>
   );
 }
