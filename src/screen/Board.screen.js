@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import Pagination from "./Pagination.screen";
 import Moment from "react-moment";
-import { Link } from "react-router-dom";
 
 function Board() {
   const [post, setPost] = useState([]);
@@ -19,7 +18,7 @@ function Board() {
 
   return (
     <Container>
-      <button type="button" className="btn btn-outline-info m-2" onClick={(e) => (window.location.href = "/add")}>
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = "/add")}>
         등록
       </button>
       <Table striped bordered hover className="m-3 table">

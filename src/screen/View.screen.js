@@ -1,8 +1,10 @@
-import { Table, Container, Button } from "react-bootstrap";
+import { Table, Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import BoardService from "../service/BoardService";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Comment from "../Comments/Veiw.comments";
+import AddComment from "../Comments/add.comments";
 
 function View() {
   const [post, setPost] = useState([]);
@@ -17,22 +19,9 @@ function View() {
       <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = "/board")}>
         목록
       </button>
-      <Link
-        to={{
-          pathname: "/eidt",
-          state: {
-            id: post.id,
-            title: post.title,
-            editer: post.editer,
-            text: post.text,
-            viewCnt: post.viewCnt,
-          },
-        }}
-        type="button"
-        className="btn btn-outline-success m-2"
-      >
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = `/edit/${id}`)}>
         수정
-      </Link>
+      </button>
       <Table striped="columns" className="m-3">
         <tbody>
           <tr>
@@ -63,6 +52,8 @@ function View() {
           </tr>
         </tbody>
       </Table>
+      <Comment />
+      <AddComment />
     </Container>
   );
 }

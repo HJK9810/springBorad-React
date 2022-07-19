@@ -9,8 +9,28 @@ class BoardService {
     return Axios.get(`/postApi/One/${id}`).then((res) => res.data);
   }
 
-  inputData(form) {
-    return Axios.post("/postApi/add", form);
+  async inputData(form) {
+    return await Axios.post("/postApi/add", form);
+  }
+
+  getEditData(id = 1) {
+    return Axios.get(`/postApi/edit/${id}`).then((res) => res.data);
+  }
+
+  async editData(form) {
+    return await Axios.post(`/postApi/edit/${form.id}`, form);
+  }
+
+  async deletData(id = 1) {
+    return await Axios.delete(`/postApi/del/${id}`);
+  }
+
+  showComments(id = 1) {
+    return Axios.get(`/postApi/comment/${id}`).then((res) => res.data);
+  }
+
+  async addComments(id = 1, form) {
+    return await Axios.post(`/postapi/comment/${id}`, form);
   }
 }
 

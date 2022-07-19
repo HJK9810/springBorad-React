@@ -16,26 +16,26 @@ function Add() {
   const handleEditerChange = (event) => setEditer(event.target.value);
   const handleTextChange = (event) => setContent(event.target.value);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     } else {
       const formBody = {
-        title: title,
         editer: editer,
-        text: content,
+        title: title,
+        content: content,
       };
       setValidated(true);
-      BoardService.inputData(formBody);
-      navigate("/board", { replace: true });
+      await BoardService.inputData(formBody);
+      navigate("/board");
     }
   };
 
   return (
     <Container>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form validated={validated}>
         <Table striped="columns" className="m-3">
           <tbody>
             <tr>
@@ -77,7 +77,7 @@ function Add() {
         <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => (window.location.href = "/board")}>
           목록
         </button>
-        <button type="submit" className="btn btn-outline-secondary m-2">
+        <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit}>
           등록
         </button>
       </Form>
