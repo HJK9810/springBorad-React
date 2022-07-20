@@ -1,7 +1,7 @@
 import BoardService from "../service/BoardService";
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination.screen";
 import Moment from "react-moment";
 
@@ -9,6 +9,7 @@ function Board() {
   const [post, setPost] = useState([]);
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     BoardService.findAll(page, 10).then((res) => {
@@ -19,7 +20,7 @@ function Board() {
 
   return (
     <Container>
-      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = "/add")}>
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate("/add")}>
         등록
       </button>
       <Table striped bordered hover className="m-3 table">
@@ -36,8 +37,9 @@ function Board() {
           {post.map((p) => (
             <tr key={p.id}>
               <td className="text-center">{p.id}</td>
-              <td>
-                <Link to={"/view/" + p.id}>{p.title}</Link>
+              <td className="d-flex justify-content-between align-items-center">
+                <Link to={`/view/${p.id}`}>{p.title}</Link>
+                <span className="badge bg-success rounded-pill ">{p.comentCnt}</span>
               </td>
               <td className="text-center">{p.editer}</td>
               <td className="text-center">{p.viewCnt}</td>

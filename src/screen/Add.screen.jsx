@@ -74,7 +74,7 @@ function Add() {
             </tr>
           </tbody>
         </Table>
-        <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => (window.location.href = "/board")}>
+        <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => navigate("/board")}>
           목록
         </button>
         <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit}>

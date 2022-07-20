@@ -1,10 +1,9 @@
-import { Form, Col, Row, FloatingLabel } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Form, InputGroup, Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import BoardService from "../service/BoardService";
 
 function AddComment() {
-  const [post, setPost] = useState([]);
   const { id } = useParams();
 
   const [editer, setEditer] = useState("");
@@ -16,7 +15,7 @@ function AddComment() {
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() == false) {
       event.preventDefault();
       event.stopPropagation();
     } else {
@@ -24,32 +23,33 @@ function AddComment() {
         editer: editer,
         comment: comment,
       };
+      console.log(formBody);
       setValidated(true);
       await BoardService.addComments(id, formBody);
     }
   };
 
   return (
-    <Form validated={validated} className="m-3 mt-0">
-      <Row className="align-items-center">
-        <Col sm={3} className="my-1">
-          <Form.Floating controlId="floatingText" label="작성자" className="mb-3">
-            <Form.Control type="text" onChange={handleEditerChange} required />
-            <Form.Control.Feedback type="invalid">작성자를 입력해 주세요.</Form.Control.Feedback>
-          </Form.Floating>
-        </Col>
-        <Col sm={8} className="my-1">
-          <Form.Floating controlId="floatingTextarea" label="댓글" className="mb-3">
-            <Form.Control as="textarea" style={{ resize: "none" }} onChange={handleTextChange} required />
-            <Form.Control.Feedback type="invalid">댓글을 입력해 주세요.</Form.Control.Feedback>
-          </Form.Floating>
-        </Col>
-        <Col xs="auto" className="my-1">
-          <button type="submit" className="btn btn-outline-primary" onClick={handleSubmit}>
-            등록
-          </button>
-        </Col>
-      </Row>
+    <Form noValidate validated={validated} className="m-3 mt-0">
+      <Table className="m-0">
+        <tbody>
+          <tr>
+            <td style={{ width: 20 + "%" }}>
+              <Form.Control placeholder="작성자" type="text" onChange={handleEditerChange} required />
+              <Form.Control.Feedback type="invalid">작성자를 입력해 주세요.</Form.Control.Feedback>
+            </td>
+            <td>
+              <InputGroup>
+                <Form.Control placeholder="댓글" onChange={handleTextChange} required />
+                <Form.Control.Feedback type="invalid">댓글을 입력해 주세요.</Form.Control.Feedback>
+                <button type="submit" className="btn btn-outline-primary" onClick={handleSubmit} disabled={editer === "" || comment === "" ? true : false}>
+                  등록
+                </button>
+              </InputGroup>
+            </td>
+          </tr>
+        </tbody>
+      </Table>
     </Form>
   );
 }

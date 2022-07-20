@@ -2,13 +2,14 @@ import { Table, Container } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import BoardService from "../service/BoardService";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Comment from "../Comments/Veiw.comments";
 import AddComment from "../Comments/add.comments";
 
 function View() {
   const [post, setPost] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     BoardService.findOne(Number(id)).then((res) => setPost(res));
@@ -16,10 +17,10 @@ function View() {
 
   return (
     <Container>
-      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = "/board")}>
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate("/board")}>
         목록
       </button>
-      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => (window.location.href = `/edit/${id}`)}>
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate(`/edit/${id}`)}>
         수정
       </button>
       <Table striped="columns" className="m-3">
@@ -52,8 +53,8 @@ function View() {
           </tr>
         </tbody>
       </Table>
-      {/* <Comment />
-      <AddComment /> */}
+      <Comment />
+      <AddComment />
     </Container>
   );
 }

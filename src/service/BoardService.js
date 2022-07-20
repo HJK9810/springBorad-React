@@ -25,13 +25,17 @@ class BoardService {
     return await Axios.delete(`/postApi/del/${id}`);
   }
 
-  // showComments(id = 1) {
-  //   return Axios.get(`/postApi/comment/${id}`).then((res) => res.data);
-  // }
+  showComments(id = 1) {
+    return Axios.get(`/postApi/comment/${id}`).then((res) => res.data);
+  }
 
-  // async addComments(id = 1, form) {
-  //   return await Axios.post(`/postapi/comment/${id}`, form);
-  // }
+  async addComments(id = 1, form) {
+    return await Axios.post(`/postApi/comment/${id}`, form);
+  }
+
+  async delComments(id = 1, cid = 1) {
+    return await Axios.delete(`/postApi/comment/${id}?id=${cid}`);
+  }
 }
 
 export default new BoardService();
