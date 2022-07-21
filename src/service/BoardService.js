@@ -13,7 +13,7 @@ class BoardService {
     return await Axios.post("/postApi/add", form);
   }
 
-  getEditData(id = 1) {
+  getData(id = 1) {
     return Axios.get(`/postApi/edit/${id}`).then((res) => res.data);
   }
 
@@ -25,8 +25,8 @@ class BoardService {
     return await Axios.delete(`/postApi/del/${id}`);
   }
 
-  showComments(id = 1) {
-    return Axios.get(`/postApi/comment/${id}`).then((res) => res.data);
+  showComments(id = 1, page = 0) {
+    return Axios.get(`/postApi/comment/${id}?page=${page}&size=5&sort=id,desc`).then((res) => res.data);
   }
 
   async addComments(id = 1, form) {

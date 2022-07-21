@@ -1,23 +1,23 @@
 import React from "react";
 
 function Pagination(props) {
-  const { number, totalPages, first, last } = props.pagination;
+  const { number, totalPages, first, last, size } = props.pagination;
   const handleClick = (p) => {
     props.setPage(p);
   };
 
   return (
     <nav aria-label="Page navigation example">
-      <ul className="pagination">
+      <ul className={"pagination " + (size ? "pagination-sm" : "")}>
         <li className={"page-item " + (first ? "disabled" : "")}>
-          <a className="page-link " onClick={() => handleClick(0)}>
+          <button className="page-link " onClick={() => handleClick(0)}>
             &laquo;
-          </a>
+          </button>
         </li>
         <li className={"page-item " + (first ? "disabled" : "")}>
-          <a className="page-link " onClick={() => handleClick(number - 1)}>
+          <button className="page-link " onClick={() => handleClick(number - 1)}>
             ‹
-          </a>
+          </button>
         </li>
         {[...Array(5).keys()]
           .map((k) => k + number - 1)
@@ -32,14 +32,14 @@ function Pagination(props) {
             );
           })}
         <li className={"page-item " + (last ? "disabled" : "")}>
-          <a className="page-link " onClick={() => handleClick(number + 1)}>
+          <button className="page-link " onClick={() => handleClick(number + 1)}>
             ›
-          </a>
+          </button>
         </li>
         <li className={"page-item" + (last ? "disabled" : "")}>
-          <a className="page-link" onClick={() => handleClick(totalPages - 1)}>
+          <button className="page-link" onClick={() => handleClick(totalPages - 1)}>
             &raquo;
-          </a>
+          </button>
         </li>
       </ul>
     </nav>

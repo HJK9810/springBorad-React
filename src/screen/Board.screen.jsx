@@ -14,7 +14,7 @@ function Board() {
   useEffect(() => {
     BoardService.findAll(page, 10).then((res) => {
       setPost(res.content);
-      setPagination({ number: res.number, totalPages: res.totalPages, first: res.first, last: res.last });
+      setPagination({ number: res.number, totalPages: res.totalPages, first: res.first, last: res.last, size: null });
     });
   }, [page]);
 
