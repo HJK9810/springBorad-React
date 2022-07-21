@@ -13,7 +13,7 @@ function Edit() {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    BoardService.getEditData(Number(id)).then((res) => {
+    BoardService.getData(Number(id)).then((res) => {
       setPost(res);
       setTitle(res.title);
       setEditer(res.editer);
@@ -56,7 +56,7 @@ function Edit() {
     <Container>
       <Form validated={validated}>
         <button type="button" className="btn btn-outline-info m-2" onClick={(e) => navigate("/board")}>
-          목록
+          취소
         </button>
         <button type="button" className="btn btn-outline-info m-2" onClick={handleSubmit}>
           수정
