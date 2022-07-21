@@ -75,7 +75,7 @@ function Add() {
           </tbody>
         </Table>
         <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => navigate("/board")}>
-          목록
+          취소
         </button>
         <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit}>
           등록
