@@ -2,7 +2,7 @@ import Axios from "../Axios";
 
 class BoardService {
   findAll(page = 0, size = 10) {
-    return Axios.get(`/postApi/list?page=${page}&size=${size}&sort=id,desc`).then((res) => res.data);
+    return Axios.get(`/postApi/list?page=${page}&size=${size}&sort=rootid,desc&sort=recnt&sort=relevel`).then((res) => res.data);
   }
 
   findOne(id = 1) {
@@ -23,6 +23,10 @@ class BoardService {
 
   async deletData(id = 1) {
     return await Axios.delete(`/postApi/del/${id}`);
+  }
+
+  async inputMention(id = 1, form) {
+    return await Axios.post(`/postApi/addMention/${id}`, form);
   }
 
   showComments(id = 1, page = 0) {

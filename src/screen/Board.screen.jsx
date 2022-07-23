@@ -4,6 +4,7 @@ import { Container, Table } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination.screen";
 import Moment from "react-moment";
+import moment from "moment";
 
 function Board() {
   const [post, setPost] = useState([]);
@@ -34,20 +35,28 @@ function Board() {
           </tr>
         </thead>
         <tbody>
-          {post.map((p) => (
-            <tr key={p.id}>
-              <td className="text-center">{p.id}</td>
-              <td className="d-flex justify-content-between align-items-center">
-                <Link to={`/view/${p.id}`}>{p.title}</Link>
-                <span className="badge bg-success rounded-pill ">{p.comentCnt}</span>
-              </td>
-              <td className="text-center">{p.editer}</td>
-              <td className="text-center">{p.viewCnt}</td>
-              <td className="text-center">
-                <Moment date={p.date} format="YYYY-MM-DD" />
-              </td>
-            </tr>
-          ))}
+          {post.map((p) => {
+            const forBlank = "\u00A0".repeat(p.relevel * 3) + (p.relevel ? "↳ [Re] " : "");
+            const newCheck = moment(p.date).format("YYYY-MM-DD") == moment().format("YYYY-MM-DD");
+            return (
+              <tr key={p.id}>
+                <td className="text-center">{p.id}</td>
+                <td className="d-flex justify-content-between align-items-center">
+                  <span className="text-info">
+                    {forBlank}
+                    <Link to={`/view/${p.id}`}>{p.title}</Link>
+                    <img src="img/newIcon.gif" width="10%" style={newCheck ? {} : { display: "none" }}></img>
+                  </span>
+                  <span className="badge bg-success rounded-pill ">{p.comentCnt}</span>
+                </td>
+                <td className="text-center">{p.editer}</td>
+                <td className="text-center">{p.viewCnt}</td>
+                <td className="text-center">
+                  <Moment date={p.date} format="YYYY-MM-DD" />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
       <div className="d-flex justify-content-center">

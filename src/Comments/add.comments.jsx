@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import BoardService from "../service/BoardService";
 
-function AddComment() {
+function AddComment(props) {
   const { id } = useParams();
 
   const [editer, setEditer] = useState("");
@@ -42,7 +42,7 @@ function AddComment() {
               <InputGroup>
                 <Form.Control placeholder="댓글" onChange={handleTextChange} required />
                 <Form.Control.Feedback type="invalid">댓글을 입력해 주세요.</Form.Control.Feedback>
-                <button type="submit" className="btn btn-outline-primary" onClick={handleSubmit} disabled={editer === "" || comment === "" ? true : false}>
+                <button type="submit" className="btn btn-outline-primary" onClick={handleSubmit} disabled={editer === "" || comment === "" || props.active === "none" ? true : false}>
                   등록
                 </button>
               </InputGroup>
