@@ -65,7 +65,7 @@ function View() {
           </tr>
           <tr>
             <td className="text-center">내용</td>
-            <td>{post.text}</td>
+            <td dangerouslySetInnerHTML={{ __html: post.text }}></td>
           </tr>
         </tbody>
       </Table>
