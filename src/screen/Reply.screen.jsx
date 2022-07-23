@@ -100,7 +100,7 @@ function Reply() {
         <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => navigate(`/view/${id}`)}>
           취소
         </button>
-        <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit}>
+        <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit} disabled={editer === "" || title === "" ? true : false}>
           등록
         </button>
       </Form>

@@ -69,7 +69,7 @@ function Edit() {
         <button type="button" className="btn btn-outline-info m-2" onClick={(e) => navigate("/board")}>
           취소
         </button>
-        <button type="button" className="btn btn-outline-info m-2" onClick={handleSubmit}>
+        <button type="button" className="btn btn-outline-info m-2" onClick={handleSubmit} disabled={editer === "" || title === "" ? true : false}>
           수정
         </button>
         <button type="button" className="btn btn-outline-warning m-2" onClick={handleDelete}>

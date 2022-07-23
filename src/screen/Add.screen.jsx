@@ -82,7 +82,7 @@ function Add() {
         <button type="button" className="btn btn-outline-secondary m-2" onClick={(e) => navigate("/board")}>
           취소
         </button>
-        <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit}>
+        <button type="button" className="btn btn-outline-secondary m-2" onClick={handleSubmit} disabled={editer === "" || title === "" ? true : false}>
           등록
         </button>
       </Form>
