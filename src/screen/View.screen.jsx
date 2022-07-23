@@ -69,8 +69,8 @@ function View() {
           </tr>
         </tbody>
       </Table>
-      <Comment active={post.content === null ? "" : "none"} />
-      <AddComment active={post.content === null ? "" : "none"} />
+      <Comment active={post.text ? "" : "none"} />
+      <AddComment active={post.text ? "" : "none"} />
     </Container>
   );
 }
