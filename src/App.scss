@@ -2,3 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 @import "./style/bootswatch";
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 370px;
+}

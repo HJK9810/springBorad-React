@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import BoardService from "../service/BoardService";
 import moment from "moment";
 import { useParams, useNavigate } from "react-router-dom";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function Reply() {
   const [post, setPost] = useState([]);
@@ -23,7 +25,6 @@ function Reply() {
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleEditerChange = (event) => setEditer(event.target.value);
-  const handleTextChange = (event) => setText(event.target.value);
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -77,9 +78,13 @@ function Reply() {
             <tr>
               <td>내용</td>
               <td>
-                <Form.Group controlId="content">
-                  <Form.Control as="textarea" rows={10} onChange={handleTextChange} style={{ resize: "none" }} required />
-                </Form.Group>
+                <CKEditor
+                  editor={ClassicEditor}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setText(data);
+                  }}
+                />
               </td>
             </tr>
             <tr>
