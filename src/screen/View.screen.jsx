@@ -27,7 +27,7 @@ function View() {
       <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate("/board")}>
         목록
       </button>
-      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate(`/edit/${id}`)}>
+      <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate(`/edit/${id}`)} disabled={active}>
         수정
       </button>
       <button type="button" className="btn btn-outline-success m-2" onClick={(e) => navigate(`/reply/${id}`)} disabled={active}>

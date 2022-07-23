@@ -53,7 +53,8 @@ function Edit() {
       const formBody = {
         id: id,
         title: "(해당 덧글은 삭제된 덧글입니다.)",
-        content: null,
+        editer: editer,
+        text: null,
       };
       await BoardService.editData(formBody);
       navigate("/board");
