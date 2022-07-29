@@ -30,8 +30,8 @@ function Board() {
             <th style={{ width: 10 + "%" }}>#</th>
             <th>title</th>
             <th style={{ width: 15 + "%" }}>작성자</th>
-            <th style={{ width: 15 + "%" }}>조회수</th>
-            <th style={{ width: 20 + "%" }}>Date</th>
+            <th style={{ width: 10 + "%" }}>조회수</th>
+            <th style={{ width: 15 + "%" }}>Date</th>
           </tr>
         </thead>
         <tbody>
